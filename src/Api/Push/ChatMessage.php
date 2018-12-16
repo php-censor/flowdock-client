@@ -1,15 +1,13 @@
 <?php
 
 /*
- * This file is part of the Mremi\Flowdock library.
- *
  * (c) Rémi Marseille <marseille.remi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Mremi\Flowdock\Api\Push;
+namespace FlowdockClient\Api\Push;
 
 /**
  * Chat message class

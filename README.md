@@ -1,15 +1,8 @@
-Flowdock library
-================
+Flowdock Client
+===============
 
-This library allows you to interact with the [Flowdock](https://www.flowdock.com/) API.
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/e7e69bdb-dce1-4189-b3d8-ae3ee661dbc9/big.png)](https://insight.sensiolabs.com/projects/e7e69bdb-dce1-4189-b3d8-ae3ee661dbc9)
-
-[![Build Status](https://travis-ci.org/mremi/Flowdock.svg?branch=master)](https://travis-ci.org/mremi/Flowdock)
-[![Total Downloads](https://poser.pugx.org/mremi/flowdock/downloads.svg)](https://packagist.org/packages/mremi/flowdock)
-[![Latest Stable Version](https://poser.pugx.org/mremi/flowdock/v/stable.svg)](https://packagist.org/packages/mremi/flowdock)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mremi/Flowdock/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mremi/Flowdock/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/mremi/Flowdock/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mremi/Flowdock/?branch=master)
+This library allows you to interact with the [Flowdock](https://www.flowdock.com/) API. Flowdock client is fork of 
+[Flowdock](https://github.com/mremi/Flowdock).
 
 **Basic Docs**
 
@@ -30,7 +23,7 @@ Add Flowdock in your composer.json:
 ```js
 {
     "require": {
-        "mremi/flowdock": "dev-master"
+        "php-censor/flowdock-client": "dev-master"
     }
 }
 ```
@@ -38,10 +31,10 @@ Add Flowdock in your composer.json:
 Now tell composer to download the library by running the command:
 
 ``` bash
-$ php composer.phar update mremi/flowdock
+$ php composer.phar update php-censor/flowdock-client
 ```
 
-Composer will install the library to your project's `vendor/mremi` directory.
+Composer will install the library to your project's `vendor/php-censor` directory.
 
 <a name="push-api"></a>
 
@@ -52,12 +45,12 @@ Composer will install the library to your project's `vendor/mremi` directory.
 ```php
 <?php
 
-use Mremi\Flowdock\Api\Push\ChatMessage;
-use Mremi\Flowdock\Api\Push\Push;
+use FlowdockClient\Api\Push\ChatMessage;
+use FlowdockClient\Api\Push\Push;
 
 $message = ChatMessage::create()
-    ->setContent('This message has been sent with mremi/flowdock PHP library')
-    ->setExternalUserName('mremi')
+    ->setContent('This message has been sent with php-censor/flowdock-client PHP library')
+    ->setExternalUserName('php-censor)
     ->addTag('#hello-world');
 
 $push = new Push('your_flow_api_token');
@@ -77,13 +70,13 @@ $ bin/flowdock send-chat-message --help
 Some arguments are mandatory:
 
 ```bash
-$ bin/flowdock send-chat-message your_flow_api_token "This message has been sent with mremi/flowdock PHP library" mremi
+$ bin/flowdock send-chat-message your_flow_api_token "This message has been sent with php-censor/flowdock-client PHP library" php-censor
 ```
 
 Some options are available:
 
 ```bash
-$ bin/flowdock send-chat-message your_flow_api_token "This message has been sent with mremi/flowdock PHP library" mremi --message-id=12 --tags="#hello" --tags="#world" --options='{"connect_timeout":1,"timeout":1}'
+$ bin/flowdock send-chat-message your_flow_api_token "This message has been sent with php-censor/flowdock-client PHP library" php-censor --message-id=12 --tags="#hello" --tags="#world" --options='{"connect_timeout":1,"timeout":1}'
 ```
 
 ### Team Inbox
@@ -91,14 +84,14 @@ $ bin/flowdock send-chat-message your_flow_api_token "This message has been sent
 ```php
 <?php
 
-use Mremi\Flowdock\Api\Push\Push;
-use Mremi\Flowdock\Api\Push\TeamInboxMessage;
+use FlowdockClient\Api\Push\Push;
+use FlowdockClient\Api\Push\TeamInboxMessage;
 
 $message = TeamInboxMessage::create()
     ->setSource('source')
-    ->setFromAddress('from.mremi@test.com')
+    ->setFromAddress('test@test.com')
     ->setSubject('subject')
-    ->setContent('This message has been sent with mremi/flowdock PHP library');
+    ->setContent('This message has been sent with php-censor/flowdock-client PHP library');
 
 $push = new Push('your_flow_api_token');
 
@@ -117,13 +110,13 @@ $ bin/flowdock send-team-inbox-message --help
 Some arguments are mandatory:
 
 ```bash
-$ bin/flowdock send-team-inbox-message your_flow_api_token source "from.mremi@test.com" subject "This message has been sent with mremi/flowdock PHP library"
+$ bin/flowdock send-team-inbox-message your_flow_api_token source "test@test.com" subject "This message has been sent with php-censor/flowdock-client PHP library"
 ```
 
 Some options are available:
 
 ```bash
-$ bin/flowdock send-team-inbox-message your_flow_api_token source "from.mremi@test.com" subject "This message has been sent with mremi/flowdock PHP library" --from-name=mremi --reply-to="to.mremi@test.com" --project=project --format=html --link="http://www.flowdock.com/" --tags="#hello" --tags="#world" --options='{"connect_timeout":1,"timeout":1}'
+$ bin/flowdock send-team-inbox-message your_flow_api_token source "test@test.com" subject "This message has been sent with php-censor/flowdock-client PHP library" --from-name=php-censor --reply-to="test@test.com" --project=project --format=html --link="http://www.flowdock.com/" --tags="#hello" --tags="#world" --options='{"connect_timeout":1,"timeout":1}'
 ```
 
 ...and more features coming soon...
@@ -138,5 +131,3 @@ A feature is missing here? Feel free to create a pull request to solve it!
 
 I hope this has been useful and has helped you. If so, share it and recommend
 it! :)
-
-[@mremitsme](https://twitter.com/mremitsme)

@@ -1,22 +1,20 @@
 <?php
 
 /*
- * This file is part of the Mremi\Flowdock library.
- *
  * (c) Rémi Marseille <marseille.remi@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Mremi\Flowdock\Tests\Api\Push;
+namespace FlowdockClient\Tests\Api\Push;
 
 use GuzzleHttp\Psr7\Response;
 
-use Mremi\Flowdock\Api\Push\BaseMessageInterface;
-use Mremi\Flowdock\Api\Push\ChatMessage;
-use Mremi\Flowdock\Api\Push\Push;
-use Mremi\Flowdock\Api\Push\TeamInboxMessage;
+use FlowdockClient\Api\Push\BaseMessageInterface;
+use FlowdockClient\Api\Push\ChatMessage;
+use FlowdockClient\Api\Push\Push;
+use FlowdockClient\Api\Push\TeamInboxMessage;
 
 /**
  * Tests the Push class
@@ -49,7 +47,7 @@ class PushTest extends \PHPUnit_Framework_TestCase
      */
     public function testSendMixedMessage(BaseMessageInterface $message, $baseUrl, array $options)
     {
-        $push = $this->getMockBuilder('Mremi\Flowdock\Api\Push\Push')
+        $push = $this->getMockBuilder('FlowdockClient\Api\Push\Push')
             ->disableOriginalConstructor()
             ->setMethods(array('sendMessage'))
             ->getMock();
@@ -96,7 +94,7 @@ class PushTest extends \PHPUnit_Framework_TestCase
             ->with($this->equalTo('post'), $this->equalTo([null, $clientOptions]))
             ->willReturnOnConsecutiveCalls($responseOk, $responseKo);
 
-        $push = $this->getMockBuilder('Mremi\Flowdock\Api\Push\Push')
+        $push = $this->getMockBuilder('FlowdockClient\Api\Push\Push')
             ->setConstructorArgs(array('flow_api_token'))
             ->setMethods(array('createClient'))
             ->getMock();

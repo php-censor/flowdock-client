@@ -11,8 +11,8 @@ use Symfony\Component\Console\Application;
 
 $application = new Application;
 
-foreach (glob(__DIR__.'/../src/Mremi/Flowdock/Command/*Command.php') as $command) {
-    $class = sprintf('Mremi\Flowdock\Command\%s', rtrim(basename($command), '.php'));
+foreach (glob(__DIR__.'/../src/Command/*Command.php') as $command) {
+    $class = sprintf('FlowdockClient\Command\%s', rtrim(basename($command), '.php'));
 
     $application->add(new $class);
 }

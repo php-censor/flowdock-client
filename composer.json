@@ -1,14 +1,21 @@
 {
-    "name": "mremi/flowdock",
+    "name": "php-censor/flowdock-client",
     "type": "library",
     "description": "A PHP library to interact with the Flowdock API",
     "keywords": ["flowdock", "api"],
-    "homepage": "https://github.com/mremi/Flowdock",
+    "homepage": "https://github.com/php-censor/flowdock-client",
     "license": "MIT",
     "authors": [
         {
-            "name": "Rémi Marseille",
-            "email": "marseille.remi@gmail.com"
+            "name":     "Dmitry Khomutov",
+            "email":    "poisoncorpsee@gmail.com",
+            "homepage": "http://corpsee.com",
+            "role":     "Flowdock Client developer"
+        },
+        {
+            "name":  "Rémi Marseille",
+            "email": "marseille.remi@gmail.com",
+            "role":  "Flowdock developer"
         }
     ],
     "require": {
@@ -21,6 +28,13 @@
         "phpunit/phpunit": "~4.1"
     },
     "autoload": {
-        "psr-0": { "Mremi\\Flowdock": "src", "Mremi\\Flowdock\\Tests": "tests/" }
+        "psr-4": {
+            "FlowdockClient\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FlowdockClient\\Tests\\": "tests/src"
+        }
     }
 }
