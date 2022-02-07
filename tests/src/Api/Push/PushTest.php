@@ -9,19 +9,21 @@
 
 namespace FlowdockClient\Tests\Api\Push;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
 use FlowdockClient\Api\Push\BaseMessageInterface;
 use FlowdockClient\Api\Push\ChatMessage;
 use FlowdockClient\Api\Push\Push;
 use FlowdockClient\Api\Push\TeamInboxMessage;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the Push class
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
-class PushTest extends \PHPUnit_Framework_TestCase
+class PushTest extends TestCase
 {
     /**
      * Provides arguments for sendMessage test
@@ -47,7 +49,7 @@ class PushTest extends \PHPUnit_Framework_TestCase
      */
     public function testSendMixedMessage(BaseMessageInterface $message, $baseUrl, array $options)
     {
-        $push = $this->getMockBuilder('FlowdockClient\Api\Push\Push')
+        $push = $this->getMockBuilder(Push::class)
             ->disableOriginalConstructor()
             ->setMethods(array('sendMessage'))
             ->getMock();
@@ -86,15 +88,15 @@ class PushTest extends \PHPUnit_Framework_TestCase
         $clientOptions = $options;
         $clientOptions['headers'] = array('Content-Type' => 'application/json');
         $clientOptions['json'] = $message->getData();
-        
-        $client = $this->getMock('GuzzleHttp\Client');
+
+        $client = $this->getMockBuilder(Client::class)->getMock();
         $client
             ->expects($this->exactly(2))
             ->method('__call')
             ->with($this->equalTo('post'), $this->equalTo([null, $clientOptions]))
             ->willReturnOnConsecutiveCalls($responseOk, $responseKo);
 
-        $push = $this->getMockBuilder('FlowdockClient\Api\Push\Push')
+        $push = $this->getMockBuilder(Push::class)
             ->setConstructorArgs(array('flow_api_token'))
             ->setMethods(array('createClient'))
             ->getMock();

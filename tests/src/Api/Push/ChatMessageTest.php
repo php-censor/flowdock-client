@@ -23,7 +23,7 @@ class ChatMessageTest extends BaseMessageTest
     /**
      * {@inheritdoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->message = new ChatMessage;
     }

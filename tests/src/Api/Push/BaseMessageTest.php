@@ -12,13 +12,14 @@ namespace FlowdockClient\Tests\Api\Push;
 use GuzzleHttp\Psr7\Response;
 
 use FlowdockClient\Api\Push\BaseMessageInterface;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the common methods
  *
  * @author Rémi Marseille <marseille.remi@gmail.com>
  */
-abstract class BaseMessageTest extends \PHPUnit_Framework_TestCase
+abstract class BaseMessageTest extends TestCase
 {
     /**
      * @var BaseMessageInterface
@@ -28,7 +29,7 @@ abstract class BaseMessageTest extends \PHPUnit_Framework_TestCase
     /**
      * Initializes message used by tests
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         throw new \RuntimeException('You must define a setUp method to initialize the message.');
     }
@@ -36,7 +37,7 @@ abstract class BaseMessageTest extends \PHPUnit_Framework_TestCase
     /**
      * Cleanups message
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->message = null;
     }
